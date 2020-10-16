@@ -35,13 +35,25 @@ class CrudController extends Controller
      */
     public function store(Request $request)
     {
+        $validation = $request->validate(
+            [
+                'kode_barang' => 'required',
+                'nama_barang' => 'required'
+            ],
+            [
+                'kode_barang.required' => 'kode_barang harus diisi',
+                'nama_barang.required' => 'nama_barang harus diisi'
+            ]
+        );
+
+
         //dd($request->all());
         //DB::insert('insert into data_barang (kode_barang, nama_barang) values (?, ?)', [$request->kode_barang, $request->nama_barang]);
         DB::table('data_barang')->insert([
             'kode_barang' => $request->kode_barang,
             'nama_barang' => $request->nama_barang
         ]);
-        return redirect()->route('cr');
+        return redirect()->route('cr')->with('message', 'data berhasil ditambah');
     }
 
     /**
@@ -63,7 +75,8 @@ class CrudController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data_barang = DB::table('data_barang')->where('id', $id)->first();
+        return view('edit', compact('data_barang'));
     }
 
     /**
@@ -75,7 +88,12 @@ class CrudController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //dd($request->all());
+        DB::table('data_barang')->where('id', $id)->update([
+            'kode_barang' => $request->kode_barang,
+            'nama_barang' => $request->nama_barang
+        ]);
+        return redirect('crud')->with('message', 'data telah diupdate');
     }
 
     /**
@@ -86,6 +104,7 @@ class CrudController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('data_barang')->where('id', $id)->delete();
+        return redirect()->route('cr');
     }
 }

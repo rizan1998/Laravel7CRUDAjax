@@ -10,18 +10,19 @@
                       <h4>HTML5 Form Basic</h4>
                     </div>
                     <div class="card-body">
-                    <form action="{{route('cr.s')}}" method="post">
+                    <form action="{{route('cr.u',$data_barang->id)}}" method="post">
                       @csrf
+                      @method('patch')
                       <div class="form-group">
                         <label>kode barang</label>
-                      <input type="text" name="kode_barang" value="{{old('kode_barang')}}" class="form-control">
+                      <input type="text" name="kode_barang" value="{{$data_barang->kode_barang}}" class="form-control">
                         @error('kode_barang')
                             <small class="text-danger" > {{$message}} </small>
                         @enderror
                       </div>
                       <div class="form-group">
                         <label>nama barang</label>
-                        <input name="nama_barang" type="text" value="{{old('nama_barang')}}" class="form-control">
+                        <input name="nama_barang" type="text" value="{{$data_barang->nama_barang}}" class="form-control">
                         @error('nama_barang')
                         <small class="text-danger" > {{$message}} </small>
                          @enderror

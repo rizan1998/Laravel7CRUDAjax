@@ -61,14 +61,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="/js/stisla.js"></script>
-
   <!-- JS Libraies -->
+  @stack('pages-sctipts')
 
   <!-- Template JS File -->
   <script src="/js/scripts.js"></script>
   <script src="/js/custom.js"></script>
 
   <!-- Page Specific JS File -->
-  @stack('page-scripts')
+  @stack('after-scripts')
 </body>
 </html>
