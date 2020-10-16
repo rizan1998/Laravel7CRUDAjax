@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CrudController extends Controller
 {
@@ -13,7 +14,8 @@ class CrudController extends Controller
      */
     public function index()
     {
-        return view('crud');
+        $data_barang = DB::table('data_barang')->paginate(3);
+        return view('crud', compact('data_barang'));
     }
 
     /**
@@ -25,12 +27,6 @@ class CrudController extends Controller
     {
         return view('crud-create');
     }
-
-    public function tambah()
-    {
-        return view('crud-create');
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -39,7 +35,13 @@ class CrudController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        //DB::insert('insert into data_barang (kode_barang, nama_barang) values (?, ?)', [$request->kode_barang, $request->nama_barang]);
+        DB::table('data_barang')->insert([
+            'kode_barang' => $request->kode_barang,
+            'nama_barang' => $request->nama_barang
+        ]);
+        return redirect()->route('cr');
     }
 
     /**
