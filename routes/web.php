@@ -24,6 +24,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/crud/{id}', 'CrudController@destroy')->name('cr.d');
     Route::get('/crud/{id}/edit', 'CrudController@edit')->name('cr.e');
     Route::patch('/crud/{id}', 'CrudController@update')->name('cr.u');
+
+    //konfigurasi
+    Route::get('/konfirmasi', 'SetupController@index')->name('konfir');
+    Route::post('/konfirmasi/kirim', 'SetupController@store')->name('kon.kir');
+    Route::get('/konfirmasi/edit/{id}', 'SetupController@edit')->name('kon.ed');
+    Route::patch('/konfirmasi/update/{id}', 'SetupController@update');
 });
 
 
