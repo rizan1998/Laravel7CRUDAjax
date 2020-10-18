@@ -23,8 +23,8 @@
   <div id="app">
     <div class="main-wrapper">
       <div class="navbar-bg"></div>
-     @include('layouts.navbar')
-     @include('layouts.sidebar')
+     @include('layoutss.navbar')
+     @include('layoutss.sidebar')
     
 
       <!-- Main Content -->

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layoutss.master')
 @section('title', 'Crud')
 @section('content')
 

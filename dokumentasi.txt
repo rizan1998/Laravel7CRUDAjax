@@ -1,0 +1,14 @@
+membuat tinker untuk user login
+php artisan tinker
+$user = new App\User (instance class atau model user)
+$user->name = 'rijan'
+$user->email = 'rizanalfalah@gmail.com'
+$user->password = bcrypt('12345')
+$user->remember_token = \Str::random(60)
+$user->save()
+
+membuat middleware
+php artisan make:middleware cekLoginMiddleware
+middleware adalah sebuah fungsi untuk mengecek session apa ada atau tidak ada
+setelah membuat fungsi middleware middware harus di masukan ke kernel yang ada
+di folder middleware, masukan pada bagian route middleware
