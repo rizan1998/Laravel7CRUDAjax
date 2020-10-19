@@ -27,3 +27,21 @@ php artisan make:factory JabatanFactory
 atau buat langsung dengan modelnya php artisan make:factory JabatanFactory --model=Jabatan
 
 sama seperti seed factory juga harus di call dulu di databaseseeder agarjalan
+
+
+tinker
+>>>  $karyawan = new \App\Models\karyawan
+=> App\Models\Karyawan {#3249}
+>>> $karyawan->nama_karyawan = 'rijan'
+=> "rijan"
+>>> $karyawan->jabatan_id = 1
+=> 1
+>>> $karyawan->divisi_id = 1
+=> 1
+>>> $karyawan->save()
+
+quit dulu
+ $karyawan = new \App\Models\karyawan
+$karyawan->find(1)
+$karyawan->find(1)->jabatan (jika muncul maka sudah berelasi)
+

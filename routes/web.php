@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/konfirmasi/update/{id}', 'SetupController@update');
 });
 
+Route::get('/karyawan', 'MasterData\KaryawanController@index');
 
 Route::match(['get', 'post'], '/home/{any}', function ($any) {
     return 'hellow dari tutorial mulai dari null ' . $any;
