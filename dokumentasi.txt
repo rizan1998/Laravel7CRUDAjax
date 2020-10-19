@@ -12,3 +12,18 @@ php artisan make:middleware cekLoginMiddleware
 middleware adalah sebuah fungsi untuk mengecek session apa ada atau tidak ada
 setelah membuat fungsi middleware middware harus di masukan ke kernel yang ada
 di folder middleware, masukan pada bagian route middleware
+
+
+membuat seeder
+php artisan make:seeer JabatanSeeder
+config
+composer dump-autoload
+panggil di database seeder baru bisa di run
+php aritisan db:seed
+
+
+membuat factory
+php artisan make:factory JabatanFactory
+atau buat langsung dengan modelnya php artisan make:factory JabatanFactory --model=Jabatan
+
+sama seperti seed factory juga harus di call dulu di databaseseeder agarjalan
