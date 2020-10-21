@@ -18,7 +18,7 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
+        if (Auth::guard($guard)->check()) { //untuk memindahkan halman jika login
             //return redirect(RouteServiceProvider::HOME);
             return redirect(RouteServiceProvider::CRUD);
         }

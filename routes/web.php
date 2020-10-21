@@ -3,7 +3,10 @@
 use Illuminate\Routing\RouteBinding;
 use Illuminate\Support\Facades\Route;
 
+
 Route::redirect('/', '/login', 301);
+Route::redirect('/home', '/crud', 301);
+
 //Route::get('/login', 'otentikasi\AuthController@login')->name('login');
 //Route::post('/login/auth', 'otentikasi\AuthController@Auth')->name('Auth');
 //Route::get('/logout', 'otentikasi\AuthController@logout')->name('logout');
@@ -37,13 +40,3 @@ Route::get('/karyawan', 'MasterData\KaryawanController@index');
 Route::match(['get', 'post'], '/home/{any}', function ($any) {
     return 'hellow dari tutorial mulai dari null ' . $any;
 });
-
-
-Route::get('/home', function () {
-    return view("welcome");
-});
-
-
-
-
-Route::get('/home', 'HomeController@index')->name('home');

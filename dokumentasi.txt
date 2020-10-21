@@ -2,6 +2,7 @@ membuat tinker untuk user login
 php artisan tinker
 $user = new App\User (instance class atau model user)
 $user->name = 'rijan'
+$user->username = 'rizan1998'
 $user->email = 'rizanalfalah@gmail.com'
 $user->password = bcrypt('12345')
 $user->remember_token = \Str::random(60)
@@ -45,3 +46,144 @@ quit dulu
 $karyawan->find(1)
 $karyawan->find(1)->jabatan (jika muncul maka sudah berelasi)
 
+
+
+Microsoft Windows [Version 10.0.18362.1139]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\xampp\htdocs\MulaiDariNullyuk>php artisan tinker
+Psy Shell v0.10.4 (PHP 7.4.9 — cli) by Justin Hileman
+>>> $kk = new \App\models\karyawan_keluarga
+=> App\Models\Karyawan_keluarga {#3250}
+>>> $kk->find(1)
+Illuminate/Database/QueryException with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'karyawan_keluarga.id' in 'where clause' (SQL: select * from `karyawan_keluarga` where `karyawan_keluarga`.`id` = 1 limit 1)'
+>>> $kk->firstwhere('nama','rijan')->karyawan
+PHP Notice:  Trying to get property 'karyawan' of non-object in Psy Shell code on line 
+1
+=> null
+>>> $kk->where('nama','rijan')->first()->karyawan
+PHP Notice:  Trying to get property 'karyawan' of non-object in Psy Shell code on line 
+1
+=> null
+>>> $kk->find(1)
+Illuminate/Database/QueryException with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'karyawan_keluarga.id' in 'where clause' (SQL: select * from `karyawan_keluarga` where `karyawan_keluarga`.`id` = 1 limit 1)'
+>>> $kk->where('nama','rijan')->first()->karyawan
+PHP Notice:  Trying to get property 'karyawan' of non-object in Psy Shell code on line 
+1
+=> null
+>>> quir
+PHP Warning:  Use of undefined constant quir - assumed 'quir' (this will throw an Error in a future version of PHP) in Psy Shell code on line 1
+=> "quir"
+>>> quit
+Exit:  Goodbye
+
+C:\xampp\htdocs\MulaiDariNullyuk>php artisan tinker
+Psy Shell v0.10.4 (PHP 7.4.9 — cli) by Justin Hileman
+>>> $kk = new \App\Models\Karyawan_keluarga
+=> App\Models\Karyawan_keluarga {#3250}
+>>> $kk->where('nama','rijan')->first()->karyawan
+PHP Notice:  Trying to get property 'karyawan' of non-object in Psy Shell code on line 
+1
+=> null
+>>> $kk->where('nama_karyawan','rijan')->first()->karyawan
+Illuminate/Database/QueryException with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nama_karyawan' in 'where clause' (SQL: select * from `karyawan_keluarga` where `nama_karyawan` = rijan limit 1)'
+>>> quit
+Exit:  Goodbye
+
+C:\xampp\htdocs\MulaiDariNullyuk>php artisan tinker
+Psy Shell v0.10.4 (PHP 7.4.9 — cli) by Justin Hileman
+>>> quit
+Exit:  Goodbye
+
+C:\xampp\htdocs\MulaiDariNullyuk>php artisan tinker
+Psy Shell v0.10.4 (PHP 7.4.9 — cli) by Justin Hileman
+>>> $kk = new \App\Models\Karyawan_keluarga
+=> App\Models\Karyawan_keluarga {#3250}
+>>> $kk->where('nama', 'rijan
+PHP Parse error: Syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting ')' on line 1
+>>> $kk->where('nama', 'rijan')->first()->karyawan
+=> App\Models\Karyawan {#3264
+     id: 1,
+     nama_karyawan: "rijan",
+     tanggal_masuk: null,
+     divisi_id: 1,
+     jabatan_karyawan: 1,
+     updated_at: "2020-10-19 01:11:39",
+     created_at: "2020-10-19 01:11:39",
+   }
+>>> $kk->where('karyawan_id', '1')->first()->karyawan
+=> App\Models\Karyawan {#3253
+     id: 1,
+     nama_karyawan: "rijan",
+     tanggal_masuk: null,
+     divisi_id: 1,
+     jabatan_karyawan: 1,
+     updated_at: "2020-10-19 01:11:39",
+     created_at: "2020-10-19 01:11:39",
+   }
+>>> quit
+Exit:  Goodbye
+
+C:\xampp\htdocs\MulaiDariNullyuk>php artisan tinker
+Psy Shell v0.10.4 (PHP 7.4.9 — cli) by Justin Hileman
+>>> $kk = new \App\Models\Karyawan
+=> App\Models\Karyawan {#3250}
+>>> $kk->find(1)->karyawan_details
+=> App\Models\Karyawan_details {#3261
+     karyawan_id: 1,
+     alamat: "kp ciloto",
+     no_hp: 838176681,
+     created_at: "2020-10-19 16:54:49",
+     updated_at: "2020-10-19 16:54:49",
+   }
+>>>
+
+relasi many to many
+pertama buat table pivot misal role_user yang bersini forignkey dari masing2 table
+buat masing-masing model
+tambah function di model User
+public function role(){
+    //relasi many to many
+    return $this->belongsToMany('\App\Models\Role');
+}
+
+
+C:\xampp\htdocs\MulaiDariNullyuk>php artisan tinker
+Psy Shell v0.10.4 (PHP 7.4.9 — cli) by Justin Hileman
+>>> $user = new \App\User
+=> App\User {#3250}
+>>> $user->find(1)
+=> App\User {#4039
+     id: 1,
+     name: "rijan",
+     username: "rizan1998",
+     email: "rizanalfalah@gmail.com",
+     email_verified_at: null,
+     created_at: "2020-10-17 00:27:23",
+     updated_at: "2020-10-17 00:27:23",
+   }
+>>> $user->find(1)->role
+=> Illuminate\Database\Eloquent\Collection {#4183
+     all: [
+       App\Models\Role {#4187
+         id: 1,
+         nama: "tambah_data_user",
+         created_at: "2020-10-19 19:43:56",
+         updated_at: "2020-10-19 19:43:56",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#3935
+           user_id: 1,
+           role_id: 1,
+         },
+       },
+       App\Models\Role {#4184
+         id: 2,
+         nama: "edit_data_user",
+         created_at: "2020-10-19 19:43:56",
+         updated_at: "2020-10-19 19:43:56",
+         pivot: Illuminate\Database\Eloquent\Relations\Pivot {#4129
+           user_id: 1,
+           role_id: 2,
+         },
+       },
+     ],
+   }
