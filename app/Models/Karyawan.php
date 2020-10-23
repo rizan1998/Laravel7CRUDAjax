@@ -12,10 +12,12 @@ class Karyawan extends Model
     {
         //relasi one to one (hasone) jika dilihat dari table jabatan mengarah ke foreignkey yaitu jabatan_id di table karyawan
         //tapi jika ditable karyawan adalah belongsTo (bersama dengan) 
-        return $this->belongsTo('\App\Jabatan', 'jabatan_karyawan'); //jika namanya bukan jabatan_id
+        return $this->belongsTo('\App\Jabatan', 'jabatan_karyawan'); //jika namanya bukan jabatan_id, jabatan berasa dari table
+        //karyawan
     }
 
     //one to one tidak harus ada id dan bisa pake find()
+    //bisa pake find() karena dataya cuman 1
     public function karyawan_details()
     {
         return $this->hasOne('\App\Models\Karyawan_details', 'karyawan_id');
@@ -24,6 +26,6 @@ class Karyawan extends Model
     //relasi one to many tidak perlu ada id
     public function karyawan_keluarga()
     {
-        return $this->hasMany('\App\Models\Karyawan_keluarga', 'karyawan_id');
+        return $this->hasMany('\App\Models\Karyawan_keluarga', 'karyawan_id'); //karyawan_di berasal dari table karyawan keluarga
     }
 }

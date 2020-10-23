@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKaryawanKeluargaTable extends Migration
+class CreateMasterAksesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateKaryawanKeluargaTable extends Migration
      */
     public function up()
     {
-        Schema::create('karyawan_keluarga', function (Blueprint $table) {
-            $table->integer('karyawan_id');
-            $table->string('nama', 100);
-            $table->string('hubungan', 100);
+        Schema::create('master_akses', function (Blueprint $table) {
+            $table->id();
+            $table->integer('user_id');
+            $table->integer('master_akses_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateKaryawanKeluargaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('karyawan_keluarga');
+        Schema::dropIfExists('master_akses');
     }
 }

@@ -15,7 +15,7 @@ class CreateKaryawanTable extends Migration
     {
         Schema::create('karyawan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_kayawan', 50);
+            $table->string('nama_karyawan', 50);
             $table->integer('jabatan_karyawan')->unsigned();
             $table->integer('divisi');
             $table->timestamps();

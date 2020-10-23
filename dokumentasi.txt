@@ -16,7 +16,7 @@ di folder middleware, masukan pada bagian route middleware
 
 
 membuat seeder
-php artisan make:seeer JabatanSeeder
+php artisan make:sedeer JabatanSeeder
 config
 composer dump-autoload
 panggil di database seeder baru bisa di run
