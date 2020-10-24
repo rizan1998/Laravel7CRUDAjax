@@ -5,7 +5,12 @@
     <div class="section-body">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-10">
-            <a href="{{route('cr.a')}}" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i>Create a new data</a>
+                @can('tambah_data')
+                <a href="{{route('cr.a')}}" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i>Create a new data</a>
+                @endcan
+                {{-- @can('tambahCrud', App\Crud::class)
+                <a href="{{route('cr.a')}}" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i>Create a new data</a>
+                @endcan --}}
             <hr>
             @if (session('message'))
                 <div class="alert alert-success alert-dismissible show fade">
@@ -30,12 +35,14 @@
                             <td>{{$data->nama_barang}}</td>
                             <td>
                             <a href="{{route('cr.e', $data->id)}}" class="badge badge-warning">Edit</a>
-                                <a href="#" data-id="{{$data->id}}" class="badge badge-danger swal-cruddelete">
-                                <form action="{{route('cr.d',$data->id)}}" id="delete{{$data->id}}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                </form>
-                                Delete</a>
+                            @can('deleteCrud', \App\Crud::class)    
+                            <a href="#" data-id="{{$data->id}}" class="badge badge-danger swal-cruddelete">
+                            <form action="{{route('cr.d',$data->id)}}" id="delete{{$data->id}}" method="post">
+                                @csrf
+                                @method('delete')
+                            </form>
+                            Delete</a>
+                            @endcan
                             </td>
                         </tr>
                         @endforeach

@@ -187,3 +187,12 @@ Psy Shell v0.10.4 (PHP 7.4.9 — cli) by Justin Hileman
        },
      ],
    }
+
+
+   $s->where('username', 'rizan1998')->first()->role
+
+
+  membuat login menggunakan policy
+  pertama buat policy
+  php artisan make:policy CrudPolicy
+  php artisan make:policy CrudPolicy --model=Crud (jika ingin menggunakan model)

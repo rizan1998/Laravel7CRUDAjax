@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Crud' => 'App\Policies\CrudPolicy',
     ];
 
     /**
@@ -24,7 +24,9 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
         //
+        Gate::define('tambah_data', function ($user) {
+            return true;
+        });
     }
 }
