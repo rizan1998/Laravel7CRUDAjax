@@ -126,12 +126,46 @@ class UserLoginSeeder extends Seeder
                 ],
                 [
                     'user_id' => 2,
+                    'master_akses_id' => 2
+                ],
+            ]
+        );
+        DB::table('akses_user')->insert(
+            [
+                [
+                    'user_id' => 1,
+                    'master_akses_id' => 1
+                ],
+                [
+                    'user_id' => 1,
+                    'master_akses_id' => 2
+                ],
+                [
+                    'user_id' => 2,
                     'master_akses_id' => 1
                 ],
                 [
                     'user_id' => 2,
                     'master_akses_id' => 2
                 ],
+            ]
+        );
+
+        // data crud
+        DB::table('data_barang')->insert(
+            [
+                [
+                    'kode_barang' => 43253,
+                    'nama_barang' => 'manga',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'kode_barang' => 43254,
+                    'nama_barang' => 'komik',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]
             ]
         );
     }

@@ -34,8 +34,9 @@
                             <td>{{$data->kode_barang}}</td>
                             <td>{{$data->nama_barang}}</td>
                             <td>
+                                @can('tambah_data')
                             <a href="{{route('cr.e', $data->id)}}" class="badge badge-warning">Edit</a>
-                            @can('deleteCrud', \App\Crud::class)    
+                               
                             <a href="#" data-id="{{$data->id}}" class="badge badge-danger swal-cruddelete">
                             <form action="{{route('cr.d',$data->id)}}" id="delete{{$data->id}}" method="post">
                                 @csrf

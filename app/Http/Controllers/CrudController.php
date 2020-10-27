@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Crud;
+//use Illuminate\Auth\Access\Gate;
+use Illuminate\Support\Facades\Gate;
 
 class CrudController extends Controller
 {
@@ -15,7 +17,11 @@ class CrudController extends Controller
      */
     public function index()
     {
-        $this->authorize('aksesCrud', Crud::class);
+        //$this->authorize('aksesCrud', Crud::class);
+        // if (!Gate::allows('akses')) {
+        //     return redirect()->route('crud');
+        // }
+
         $data_barang = DB::table('data_barang')->paginate(3);
         return view('crud', compact('data_barang'));
     }
