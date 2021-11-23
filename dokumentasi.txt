@@ -196,3 +196,5 @@ Psy Shell v0.10.4 (PHP 7.4.9 — cli) by Justin Hileman
   pertama buat policy
   php artisan make:policy CrudPolicy
   php artisan make:policy CrudPolicy --model=Crud (jika ingin menggunakan model)
+
+  testing ssh push
